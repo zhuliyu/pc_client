@@ -1,0 +1,5 @@
+﻿{
+  "NODE_ENV": "test",
+  "BASE_API": "http://172.16.41.173:18080/",
+  "BUCKET_NAME": "njdeveloptest"
+}

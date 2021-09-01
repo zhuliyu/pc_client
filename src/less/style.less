@@ -1,0 +1,42 @@
+/*
+所有公共样式文件，请确保有引入common.less
+*/
+@spacing: 20px;
+@fill: 100%;
+.regionSize (@regionW: 100%, @regionH: 100%) {
+  width: @regionW;
+  height: @regionH;
+  position: relative;
+}
+.register-eyes-open{
+  background: url(../assets/img/login/register-eyes-open.png) center no-repeat;
+  background-size: contain;
+  cursor: pointer;
+  margin-right: @spacing / 4;
+  &:before{
+    content: "";
+  }
+  &:after {
+    content: '';
+    height: @fill;
+    width: @spacing + 2;
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+.register-eyes-close{
+  background: url(../assets/img/login/register-eyes-close.png) center no-repeat;
+  background-size: contain;
+  cursor: pointer;
+  margin-right: @spacing / 4;
+  &:before{
+    content: "";
+  }
+  &:after {
+    content: '';
+    height: @fill;
+    width: @spacing + 2;
+    display: inline-block;
+    vertical-align: middle;
+  }
+}

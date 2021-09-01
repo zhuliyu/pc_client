@@ -1,0 +1,6 @@
+export const USER_LOGIN_IN = 'USER_LOGIN_IN'
+export const CLEAR_USER_INFO = 'CLEAR_USER_INFO'
+export const TEL_LOGIN_IN = 'TEL_LOGIN_IN'
+export const SET_HEAD_IMG_URL = 'SET_HEAD_IMG_URL'
+export const SET_USER_NAME = 'SET_USER_NAME'
+export const USER_WX_BIND = 'USER_WX_BIND'
