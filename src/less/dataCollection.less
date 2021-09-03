@@ -51,8 +51,9 @@
     .panel-center-content{
         display: flex;
         flex-direction: row;
-        padding: 2.78vh 1.56vw 0 1.56vw;
-        box-sizing: border-box;
+        padding: 2.78vh 1.56vw 1.5vw 1.56vw;
+				box-sizing: border-box;
+				height: 67.5vh;
         .normal-container{
 					width: 28.13vw;
 					height: 17.78vh;
@@ -77,13 +78,13 @@
 							display: flex;
 							flex-direction: row;
 							.num-box{
-									width: 2.7vw;
-									height: 4.17vw;
+									width: 1.92vw;
+									height: 3.02vw;
 									background: url("../assets/img/dataCollection/num_bg.png") no-repeat;
 									background-size: 100%;
 									margin-right: 0.52vw;
 									text-align: center;
-									line-height: 4.17vw;
+									line-height: 3.02vw;
 									div{
 											background: linear-gradient(to bottom, #fff, #4ac6ff);
 											-webkit-background-clip: text;
@@ -109,6 +110,9 @@
 				}
         .content-left {
 					width: 28.13vw;
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
 					.process{
 							padding: 2.87vh 0.78vw;
 							height: 20.65vh;
@@ -249,10 +253,17 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            position: relative;
+						position: relative;
+						cursor: pointer;
             img{
-                max-width: 74%;
+              max-width: 70%;	
+              // opacity: 0;	   
+              // animation: faseIn 1s 1.5s linear forwards
             }
+            // @keyframes faseIn {
+            //   from {opacity: 0; transform: scale(1.5);left: 10000px;}
+            //   to{opacity: 1; transform: scale(1);left: 0px}
+            // }
             .shadow {
                 width:40vw;
                 height: 41vw;
@@ -340,7 +351,8 @@
             // height: 17.13vh;
             .bar-container {
 								// height: 11vw;
-								height: 185px;
+								height: 184px;
+								width: 28.13vw;
             }
         }
         .equipment-useRate{
@@ -464,7 +476,12 @@
                         box-sizing: border-box;
                         color: white;
                         font-size: 0.94vw;
-                        line-height: 7.45vh;
+												display: flex;
+												align-items: center;
+												justify-content: flex-end;
+												img{
+													max-height: 75%;
+												}
                     }
                 }
             }

@@ -154,7 +154,7 @@ export default class ApplyDetail extends mixins(getUserInfo) {
       this.screenChange()
     })
   }
-  destoryed () {
+  destroyed () {
     window.removeEventListener('scroll', this.handleScroll)
   }
   @Watch('$route')

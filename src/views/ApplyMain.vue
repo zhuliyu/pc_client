@@ -101,7 +101,7 @@ export default class ApplyMain extends mixins(getUserInfo) {
     this.getAppList()
     window.addEventListener('scroll', this.handleScroll)
   }
-  destoryed () {
+  destroyed () {
     window.removeEventListener('scroll', this.handleScroll)
   }
   activated () {
