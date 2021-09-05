@@ -1,7 +1,9 @@
 .data-panel {
-    .regionSize(@fill, @fill);
+    // .regionSize(@fill, @fill);
     // min-width: 1920px;
     // min-height: 1080px;
+        width: 100vw;
+        height: 100vh;
 		background: url("../assets/img/dataCollection/background1.png") no-repeat;
 		background-size: cover;
 		overflow-x: hidden;
@@ -22,21 +24,40 @@
 				background-size: 100%;  
 			}
 			.header-bg {
-				width:84vw;
-				height: 5.94vw;
-				background: url("../assets/img/dataCollection/data_header.png") no-repeat;
-				background-size: cover;
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				align-items: center;
-				margin-left: 8vw;
+                width: 88%;
+                position: relative;
+                height: 11vh;
+                margin: auto;
+				// width:84vw;
+				// height: 5.94vw;
+				// background: url("../assets/img/dataCollection/data_header.png") no-repeat;
+				// background-size: cover;
+				// display: flex;
+				// flex-direction: column;
+				// justify-content: center;
+				// align-items: center;
+                // margin-left: 8vw;
+                &>img {
+                    width: 100%;
+                    height: 11vh;
+                }
+                .header-content {
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%,-50%);
+                    text-align: center;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                }
 				.title {
 						font-size: 1.9vw;
-						line-height: 2.5vw;
+						line-height: 2.3vw;
 						letter-spacing: 2px;
 						font-weight: bold;
-						background: linear-gradient(to bottom, #53efff 0%, #2dc6ff 73%, #069cff 100%);
+						background: linear-gradient(to bottom, #53efff 0%, #069cff 100%);
 						-webkit-background-clip: text;
 						color: transparent;
 				}
@@ -53,7 +74,8 @@
         flex-direction: row;
         padding: 2.78vh 1.56vw 1.5vw 1.56vw;
 				box-sizing: border-box;
-				height: 67.5vh;
+                height: 68.5vh;
+                // min-height: 600px;
         .normal-container{
 					width: 28.13vw;
 					height: 17.78vh;
@@ -254,24 +276,28 @@
             justify-content: center;
             align-items: center;
 						position: relative;
-						cursor: pointer;
+                        cursor: pointer;
+            .eqp-img{
+                max-width: 70%;
+                
+            }
             img{
-              max-width: 70%;	
+            //   max-width: 70%;	
               // opacity: 0;	   
               // animation: faseIn 1s 1.5s linear forwards
             }
-            // @keyframes faseIn {
-            //   from {opacity: 0; transform: scale(1.5);left: 10000px;}
-            //   to{opacity: 1; transform: scale(1);left: 0px}
-            // }
+            @keyframes faseIn {
+              from {opacity: 0; transform: scale(1.5);left: 10000px;}
+              to{opacity: 1; transform: scale(1);left: 0px}
+            }
             .shadow {
                 width:40vw;
-                height: 41vw;
-                background: url("../assets/img/dataCollection/data_shadow.png") no-repeat;
-                background-size: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;		
+                // height: 41vw;
+                // background: url("../assets/img/dataCollection/data_shadow.png") no-repeat;
+                // background-size: 100%;
+                // display: flex;
+                // justify-content: center;
+                // align-items: center;		
                 position: absolute;
                 bottom: -5vw;	
             }
@@ -489,7 +515,7 @@
     }
     .panel-bottom{
         width: 100vw;
-        padding: 0 1.67vw 1vw 1.67vw;
+        padding: 0 1.67vw 2vh 1.67vw;
         box-sizing: border-box;
         // position: absolute;
         // left: 0;

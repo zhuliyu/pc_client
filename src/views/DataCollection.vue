@@ -2,9 +2,13 @@
   <div class="data-panel">
       <div class="panel-header">
           <div class="logo"></div>
-          <div class="header-bg">
-          <div class="title">无人柔性产线数据采集系统</div>
-          <div class="title-en">(SCADA)</div>
+        <div class="header-bg">
+          <img src="../assets/img/dataCollection/data_header.png" alt="">
+          <div class="header-content">
+            <div class="title">无人柔性产线数据采集系统</div>
+            <div class="title-en">(SCADA)</div>
+          </div>
+          
         </div>
     </div>
     <div class="panel-center-content">
@@ -24,7 +28,7 @@
             </div>
           </div>
         </div>
-        <div class="normal-container process" v-show="activeEquipment.secondOrder">
+        <div class="normal-container process" v-show="activeEquipment.secondOrder" style="marginBottom:0">
           <div class="process-title">第二订单进度</div>
           <div class="process-container">
             <div v-for="(item, index) in process2" :key="index"
@@ -35,10 +39,15 @@
         </div>
       </div>
       <div class="content-equipment" @click="enterDetail">
-        <img :src="activeEquipment.img" alt=""
-          :style="{marginLeft: activeEquipment.title === '包装工站' ? '30%' : '0' }"
-          >
-        <div class="shadow"></div>
+        
+              <img :src="activeEquipment.img" alt="" class="eqp-img"
+              
+              :style="{marginLeft: activeEquipment.title === '包装工站' ? '30%' : '0' }"
+              >
+        
+        
+        <img src="../assets/img/dataCollection/data_shadow.png" alt="" class="shadow">
+        <!-- <div class="shadow"></div> -->
       </div>
       <div class="content-right">
         <div class="normal-container-row" style="height:21.67vh" v-show="activeEquipment.equipmentRunningRate || activeEquipment.equipmentOEE">
@@ -77,7 +86,7 @@
             </div>
           </div>
         </div>
-        <div class="normal-container" style="height:17.13vh" v-show="activeEquipment.materialInfos && activeEquipment.materialInfos.length">
+        <div class="normal-container" style="height:17.13vh;marginBottom:0" v-show="activeEquipment.materialInfos && activeEquipment.materialInfos.length">
           <div class="equipmemt-bar" >
             <div class="bar-container" ref="materialBar"></div>
           </div>
@@ -214,87 +223,87 @@ export default class DataCollection extends Vue {
     this.timer = null
   }
   initData () {
-    fetch(apiConfig('dataCollection/getInfo'), {
-      companyId: '123456'
-    })
-      .then((res:any) => {
-        if (res.code === 200) {
-          res.data && res.data.length && res.data.map((item:any) => {
-            item.equipmentRunInfos && item.equipmentRunInfos.length && item.equipmentRunInfos.map((machine:any, index:any) => {
-              if (machine.title === '设备状态') {
-                machine.result = this.nameMatch[machine.result]
-              }
-              let find = this.equipmentStatus.find((status:any) => status.title === machine.title)
-              if (find) {
-                item.equipmentRunInfos[index] = { ...machine, ...find }
-              }
-            })
-          })
-          this.handleData(res.data)
-        }
-      })
-    // let res = [
-    //   { machineName: '管理触摸屏',
-    //     firstOrder: '13xxxxxxx',
-    //     firstOrderTime: '300s',
-    //     secondOrderTime: '120s',
-    //     secondOrder: '124xxxxxx',
-    //     firstOrderProgress: '上料',
-    //     secondOrderProgress: '打包'
-    //   },
-    //   { machineName: '上料工站',
-    //     firstOrder: '13xxxxxxx',
-    //     firstOrderProgress: '入库',
-    //     equipmentRunningRate: '60',
-    //     equipmentOEE: '20',
-    //     equipmentRunInfos: [{ title: '设备状态', result: '运行' }, { title: '节拍时间', result: '180S' }]
-    //   },
-    //   {
-    //     machineName: '打标工站',
-    //     firstOrder: '13xxxxxxx',
-    //     equipmentRunningRate: '70',
-    //     equipmentOEE: '50',
-    //     equipmentRunInfos: [{ title: '节拍时间', result: '120s' }, { title: '故障代码', result: 'NA' }],
-    //     materialInfos: [
-    //       { title: '上盖', result: 2 },
-    //       { title: '下盖', result: 1 },
-    //       { title: '可用材料1', result: 2 }
-    //     ]
-    //   },
-    //   {
-    //     machineName: '号牌装配工站',
-    //     firstOrder: '13xxxxxxx',
-    //     equipmentRunningRate: '25',
-    //     equipmentOEE: '40',
-    //     equipmentRunInfos: [{ title: '节拍时间', result: '120s' }, { title: '故障代码', result: 'NA' }],
-    //     materialInfos: [
-    //       { title: '可用材料1', result: 2 },
-    //       { title: '可用材料2', result: 1 },
-    //       { title: '可用材料3', result: 2 },
-    //       { title: '可用材料4', result: 1 },
-    //       { title: '可用材料5', result: 1 }
-    //     ]
-    //   },
-    //   {
-    //     machineName: '成品仓库',
-    //     firstOrder: '13xxxxxxx',
-    //     storageUtilization: '60',
-    //     totalStorage: '10',
-    //     usedStorage: '8'
-    //   }
-    // ]
-    // res.map((item:any) => {
-    //   item.equipmentRunInfos && item.equipmentRunInfos.length && item.equipmentRunInfos.map((machine:any, index:any) => {
-    //     if (machine.title === '设备状态') {
-    //       machine.result = this.nameMatch[machine.result]
-    //     }
-    //     let find = this.equipmentStatus.find((status:any) => status.title === machine.title)
-    //     if (find) {
-    //       item.equipmentRunInfos[index] = { ...machine, ...find }
+    // fetch(apiConfig('dataCollection/getInfo'), {
+    //   companyId: '123456'
+    // })
+    //   .then((res:any) => {
+    //     if (res.code === 200) {
+    //       res.data && res.data.length && res.data.map((item:any) => {
+    //         item.equipmentRunInfos && item.equipmentRunInfos.length && item.equipmentRunInfos.map((machine:any, index:any) => {
+    //           if (machine.title === '设备状态') {
+    //             machine.result = this.nameMatch[machine.result]
+    //           }
+    //           let find = this.equipmentStatus.find((status:any) => status.title === machine.title)
+    //           if (find) {
+    //             item.equipmentRunInfos[index] = { ...machine, ...find }
+    //           }
+    //         })
+    //       })
+    //       this.handleData(res.data)
     //     }
     //   })
-    // })
-    // this.handleData(res)
+    let res = [
+      { machineName: '管理触摸屏',
+        firstOrder: '13xxxxxxx',
+        firstOrderTime: '300s',
+        secondOrderTime: '120s',
+        secondOrder: '124xxxxxx',
+        firstOrderProgress: '上料',
+        secondOrderProgress: '打包'
+      },
+      { machineName: '上料工站',
+        firstOrder: '13xxxxxxx',
+        firstOrderProgress: '入库',
+        equipmentRunningRate: '60',
+        equipmentOEE: '20',
+        equipmentRunInfos: [{ title: '设备状态', result: '运行' }, { title: '节拍时间', result: '180S' }]
+      },
+      {
+        machineName: '打标工站',
+        firstOrder: '13xxxxxxx',
+        equipmentRunningRate: '70',
+        equipmentOEE: '50',
+        equipmentRunInfos: [{ title: '节拍时间', result: '120s' }, { title: '故障代码', result: 'NA' }],
+        materialInfos: [
+          { title: '上盖', result: 2 },
+          { title: '下盖', result: 1 },
+          { title: '可用材料1', result: 2 }
+        ]
+      },
+      {
+        machineName: '号牌装配工站',
+        firstOrder: '13xxxxxxx',
+        equipmentRunningRate: '25',
+        equipmentOEE: '40',
+        equipmentRunInfos: [{ title: '节拍时间', result: '120s' }, { title: '故障代码', result: 'NA' }],
+        materialInfos: [
+          { title: '可用材料1', result: 2 },
+          { title: '可用材料2', result: 1 },
+          { title: '可用材料3', result: 2 },
+          { title: '可用材料4', result: 1 },
+          { title: '可用材料5', result: 1 }
+        ]
+      },
+      {
+        machineName: '成品仓库',
+        firstOrder: '13xxxxxxx',
+        storageUtilization: '60',
+        totalStorage: '10',
+        usedStorage: '8'
+      }
+    ]
+    res.map((item:any) => {
+      item.equipmentRunInfos && item.equipmentRunInfos.length && item.equipmentRunInfos.map((machine:any, index:any) => {
+        if (machine.title === '设备状态') {
+          machine.result = this.nameMatch[machine.result]
+        }
+        let find = this.equipmentStatus.find((status:any) => status.title === machine.title)
+        if (find) {
+          item.equipmentRunInfos[index] = { ...machine, ...find }
+        }
+      })
+    })
+    this.handleData(res)
   }
   handleData (data:any) {
     console.log(data)
@@ -752,4 +761,16 @@ export default class DataCollection extends Vue {
 <style scoped lang="less" type="text/less">
   @import "../less/style.less";
   @import "../less/dataCollection.less";
+
+  .fade-enter-active {
+  transition: all .3s ease;
+}
+.fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.fade-enter, .fade-leave-to
+/* .slide-fade-leave-active for below version 2.1.8 */ {
+  transform: translateX(10px);
+  opacity: 0;
+}
 </style>
